@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://byxxx2e7v8db6"]
+
+[ext_resource type="PackedScene" uid="uid://d4nb212ytueiu" path="res://Scenes/Environments/bg.tscn" id="1_obmhp"]
+[ext_resource type="Script" uid="uid://b8ddpqppvr2t6" path="res://Scripts/camera.gd" id="2_ajf1t"]
+[ext_resource type="PackedScene" uid="uid://pliqmaf00clf" path="res://Scenes/Player/player.tscn" id="2_hselo"]
+[ext_resource type="Script" uid="uid://b64x34d17h27f" path="res://Scripts/terrain.gd" id="3_ajf1t"]
+[ext_resource type="PackedScene" uid="uid://08y5mne5hi7m" path="res://Scenes/dummy.tscn" id="4_ylqj6"]
+
+[sub_resource type="Curve2D" id="Curve2D_hselo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -154, 558, 0, 0, 0, 0, 741, 558, 0, 0, 0, 0, 741, 872, 0, 0, 0, 0, -156, 873, 0, 0, 0, 0, -154, 558)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_ajf1t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 175, 300, -89.91735, -0.661157, 89.91735, 0.661157, 324, 331, 0, 0, 0, 0, 485, 291, -103.80165, -1.322314, 103.80165, 1.322314, 644, 325, 0, 0, 0, 0, 825, 289, -63.471073, -1.322314, 63.471073, 1.322314, 965, 327, 0, 0, 0, 0, 1094, 297)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_ylqj6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 194, 306, -89.91735, -0.661157, 89.91735, 0.661157, 324, 331, 0, 0, 0, 0, 496, 295, -103.80165, -1.322314, 103.80165, 1.322314, 644, 325, 0, 0, 0, 0, 818, 292, -63.471073, -1.322314, 63.471073, 1.322314, 965, 327, 0, 0, 0, 0, 1085, 303)
+}
+point_count = 7
+
+[node name="FightGround" type="Node2D" unique_id=608847228]
+
+[node name="BG" parent="." unique_id=479381507 instance=ExtResource("1_obmhp")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1150961114]
+position = Vector2(640, 360)
+script = ExtResource("2_ajf1t")
+
+[node name="Player" parent="." unique_id=1213475937 instance=ExtResource("2_hselo")]
+visible = false
+z_index = 50
+position = Vector2(360, 347)
+scale = Vector2(1.5, 1.5)
+max_speed = 400.0
+jump_cut_multiplier = 0.541
+gravity = 900.0
+fall_gravity = 2000.0
+apex_gravity = 500.0
+
+[node name="Ground" type="Path2D" parent="." unique_id=391337396]
+z_index = 100
+position = Vector2(347, -110)
+curve = SubResource("Curve2D_hselo")
+script = ExtResource("3_ajf1t")
+line_width = 0.0
+polygon_color = Color(0.12882987, 0.12882978, 0.12882978, 1)
+polygon_texture_scale = Vector2(2, 2)
+collision_layer = 8
+collison_mask = 1
+has_up_line = true
+up_line_color = Color(0.37954354, 0.40760735, 0.5000824, 1)
+up_line_width = 20.0
+
+[node name="Dummy" parent="." unique_id=290897944 instance=ExtResource("4_ylqj6")]
+visible = false
+z_index = 10
+position = Vector2(640, 442)
+health = 20
+health_bar_speed = 0.5
+hit_force_power = 20.0
+hit_force_speed = 0.6
+
+[node name="Fence" type="Node2D" parent="." unique_id=2089131826]
+
+[node name="Terrain" type="Path2D" parent="Fence" unique_id=346515826]
+curve = SubResource("Curve2D_ajf1t")
+script = ExtResource("3_ajf1t")
+line_color = Color(0.10224319, 0.10224321, 0.10224321, 1)
+polygon_color = Color(1, 1, 1, 0)
+collision_enabled = false
+metadata/_custom_type_script = "uid://b64x34d17h27f"
+
+[node name="Terrain2" type="Path2D" parent="Fence" unique_id=338664274]
+position = Vector2(1, 49)
+curve = SubResource("Curve2D_ajf1t")
+script = ExtResource("3_ajf1t")
+line_color = Color(0.10224319, 0.10224321, 0.10224321, 1)
+polygon_color = Color(1, 1, 1, 0)
+collision_enabled = false
+metadata/_custom_type_script = "uid://b64x34d17h27f"
+
+[node name="Terrain3" type="Path2D" parent="Fence" unique_id=1852619229]
+position = Vector2(-3, 95)
+curve = SubResource("Curve2D_ylqj6")
+script = ExtResource("3_ajf1t")
+line_color = Color(0.10224319, 0.10224321, 0.10224321, 1)
+polygon_color = Color(1, 1, 1, 0)
+collision_enabled = false
+metadata/_custom_type_script = "uid://b64x34d17h27f"
+
+[node name="Line2D" type="Line2D" parent="Fence" unique_id=1287738767]
+z_index = 6
+position = Vector2(347, -110)
+points = PackedVector2Array(-150, 562, -172, 405)
+width = 20.0
+default_color = Color(0.20042196, 0.1614964, 0.21621749, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Fence" unique_id=1729332694]
+z_index = 6
+position = Vector2(347, -110)
+points = PackedVector2Array(154, 564, 139, 398)
+width = 20.0
+default_color = Color(0.20042196, 0.1614964, 0.21621749, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="Fence" unique_id=1134605244]
+z_index = 6
+position = Vector2(347, -110)
+points = PackedVector2Array(465, 561, 481, 398)
+width = 20.0
+default_color = Color(0.20042196, 0.1614964, 0.21621749, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="Fence" unique_id=1693258487]
+z_index = 6
+position = Vector2(347, -110)
+points = PackedVector2Array(729, 570, 748, 405)
+width = 20.0
+default_color = Color(0.20042196, 0.1614964, 0.21621749, 1)
+begin_cap_mode = 2
+end_cap_mode = 2

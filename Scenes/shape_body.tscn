@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bvry0fxgfs5pf"]
+
+[ext_resource type="Script" uid="uid://ddh2ubnvgxyf5" path="res://Scripts/shape_body.gd" id="1_f6gh8"]
+
+[sub_resource type="Curve2D" id="Curve2D_yrixw"]
+
+[node name="ShapeBody" type="Path2D" unique_id=1945833870]
+curve = SubResource("Curve2D_yrixw")
+script = ExtResource("1_f6gh8")

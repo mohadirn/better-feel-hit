@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bfptskw38ich5"]
+
+[ext_resource type="PackedScene" uid="uid://d4nb212ytueiu" path="res://Scenes/Environments/bg.tscn" id="1_hvvm8"]
+[ext_resource type="PackedScene" uid="uid://pliqmaf00clf" path="res://Scenes/Player/player.tscn" id="2_0ac8p"]
+[ext_resource type="Texture2D" uid="uid://ccr0y7mljbc10" path="res://Art/Sprites/grass.png" id="5_0ac8p"]
+[ext_resource type="Texture2D" uid="uid://c06i3777h3ftj" path="res://Art/Sprites/dirt.png" id="5_xx0be"]
+[ext_resource type="Script" uid="uid://b64x34d17h27f" path="res://Scripts/terrain.gd" id="7_kli7b"]
+
+[sub_resource type="Curve2D" id="Curve2D_xx0be"]
+_data = {
+"points": PackedVector2Array(-26.502556, 17.148712, 26.502556, -17.148712, 63, 450, -34.297424, -14.030767, 34.297424, 14.030767, 316, 447, 37.415375, -4.676922, -37.415375, 4.676922, 310, 690, 38.974346, 3.1179478, -38.974346, -3.1179478, 70, 691, -20.26666, 40.53332, 20.26666, -40.53332, 63, 450)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_kli7b"]
+_data = {
+"points": PackedVector2Array(-26.502556, 17.148712, 26.502556, -17.148712, 63, 450, -34.297424, -4.6769238, 34.297424, 4.6769238, 187, 447, -77.94869, -7.794869, 77.94869, 7.794869, 369, 634, -15.589739, -15.589739, 15.589739, 15.589739, 516, 633, 29.620504, -17.148712, -29.620504, 17.148712, 508, 743, 38.974346, 3.1179478, -38.974346, -3.1179478, 63, 740, -20.26666, 40.53332, 20.26666, -40.53332, 63, 450)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_ph32v"]
+_data = {
+"points": PackedVector2Array(-26.502556, 17.148712, 26.502556, -17.148712, 63, 450, -34.297424, -14.030767, 34.297424, 14.030767, 189, 448, -26.502556, 23.38461, 26.502556, -23.38461, 180, 309, -17.148712, -15.589739, 17.148712, 15.589739, 444, 312, 37.415375, -4.676922, -37.415375, 4.676922, 426, 442, 7.7948694, -17.148712, -7.7948694, 17.148712, 308, 439, 17.148712, -18.707687, -17.148712, 18.707687, 313, 554, 12.471791, -15.589739, -12.471791, 15.589739, 177, 552, 31.179478, -17.148712, -31.179478, 17.148712, 182, 690, 38.974346, 3.1179478, -38.974346, -3.1179478, 70, 691, -20.26666, 40.53332, 20.26666, -40.53332, 63, 450)
+}
+point_count = 11
+
+[node name="Terrain" type="Node2D" unique_id=608847228]
+
+[node name="BG" parent="." unique_id=479381507 instance=ExtResource("1_hvvm8")]
+
+[node name="Player" parent="." unique_id=1213475937 instance=ExtResource("2_0ac8p")]
+position = Vector2(108, 386)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=278455145]
+curve = SubResource("Curve2D_xx0be")
+script = ExtResource("7_kli7b")
+line_color = Color(0.13312441, 0.100840546, 0.025188921, 1)
+polygon_texture = ExtResource("5_xx0be")
+polygon_texture_scale = Vector2(2, 2)
+collision_layer = 1
+collison_mask = 1
+has_up_line = true
+up_line_color = Color(1, 1, 1, 1)
+up_line_texture = ExtResource("5_0ac8p")
+up_line_width = 60.0
+
+[node name="Path2D3" type="Path2D" parent="." unique_id=2027791638]
+position = Vector2(662.7154, -61)
+curve = SubResource("Curve2D_kli7b")
+script = ExtResource("7_kli7b")
+line_color = Color(0.13312441, 0.100840546, 0.025188921, 1)
+polygon_texture = ExtResource("5_xx0be")
+polygon_texture_scale = Vector2(2, 2)
+collision_layer = 1
+collison_mask = 1
+has_up_line = true
+up_line_color = Color(1, 1, 1, 1)
+up_line_texture = ExtResource("5_0ac8p")
+up_line_width = 60.0
+
+[node name="Path2D2" type="Path2D" parent="." unique_id=391337396]
+position = Vector2(357.7154, -121)
+curve = SubResource("Curve2D_ph32v")
+script = ExtResource("7_kli7b")
+line_color = Color(0.13312441, 0.100840546, 0.025188921, 1)
+polygon_texture = ExtResource("5_xx0be")
+polygon_texture_scale = Vector2(2, 2)
+collision_layer = 1
+collison_mask = 1
+has_up_line = true
+up_line_color = Color(1, 1, 1, 1)
+up_line_texture = ExtResource("5_0ac8p")
+up_line_width = 60.0

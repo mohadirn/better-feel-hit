@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d4nb212ytueiu"]
+
+[ext_resource type="Script" uid="uid://c42efve0rjrb3" path="res://Scripts/background.gd" id="1_ehcip"]
+[ext_resource type="Texture2D" uid="uid://balnu2l0vg35b" path="res://Art/Sprites/bg_line.png" id="1_sjcup"]
+
+[node name="BG" type="CanvasLayer" unique_id=479381507 node_paths=PackedStringArray("color_sprite")]
+layer = -100
+script = ExtResource("1_ehcip")
+color_sprite = NodePath("Color")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=922461506]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1018584, 0.27658734, 0.29548907, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1633946850]
+modulate = Color(0.18039216, 0.18039216, 0.18039216, 0.45490196)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sjcup")
+stretch_mode = 1
+
+[node name="Color" type="ColorRect" parent="." unique_id=684983637]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://08y5mne5hi7m"]
+
+[ext_resource type="Script" uid="uid://bjmt3d6iqmng0" path="res://Scripts/dummy.gd" id="1_5d6mj"]
+[ext_resource type="Texture2D" uid="uid://cfruvnl06milw" path="res://Art/Sprites/dummy.png" id="1_x66xh"]
+[ext_resource type="PackedScene" uid="uid://cjeakdd4awek1" path="res://Scenes/blood_particle.tscn" id="3_s0uyp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08n87"]
+size = Vector2(112, 192)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gepdb"]
+radius = 27.0
+height = 180.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5d6mj"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.21396312, 0.15752277, 0.11967776, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0uyp"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0.14636412, 0.10424686, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.35944015, 0.29222497, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="Dummy" type="StaticBody2D" unique_id=290897944 node_paths=PackedStringArray("sprite", "health_bar", "hit_particle")]
+script = ExtResource("1_5d6mj")
+sprite = NodePath("Sprite")
+health_bar = NodePath("HealthBar")
+hit_particle = NodePath("BloodParticle")
+
+[node name="Sprite" type="Node2D" parent="." unique_id=1121334713]
+
+[node name="Shadow" type="Sprite2D" parent="Sprite" unique_id=342896129]
+modulate = Color(0, 0, 0, 0.5058824)
+position = Vector2(-10, -86.173)
+scale = Vector2(0.6478585, 0.6478585)
+texture = ExtResource("1_x66xh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite" unique_id=1970528132]
+position = Vector2(0, -86.173)
+scale = Vector2(0.6478585, 0.6478585)
+texture = ExtResource("1_x66xh")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1356664763]
+position = Vector2(0, -86)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1562491515]
+shape = SubResource("RectangleShape2D_08n87")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=662286527]
+position = Vector2(0, -86)
+shape = SubResource("CapsuleShape2D_gepdb")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=237260992]
+offset_left = -49.0
+offset_top = -222.0
+offset_right = 51.0
+offset_bottom = -192.0
+pivot_offset_ratio = Vector2(0.5, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_5d6mj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s0uyp")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="BloodParticle" parent="." unique_id=845082970 instance=ExtResource("3_s0uyp")]
+position = Vector2(0, -101.12)
+color = Color(0.8352941, 0, 0, 1)

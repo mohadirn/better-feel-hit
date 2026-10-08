@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://pliqmaf00clf"]
+
+[ext_resource type="Script" uid="uid://bk5g28u2udl1t" path="res://Scripts/Player/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://dy22dhurstbre" path="res://Art/Sprites/character.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://daovryqhdnnqf" path="res://Art/Sprites/Sword.png" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://by3pajcv2l62i" path="res://Scripts/Player/sword.gd" id="3_vgqql"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_22t55"]
+radius = 31.0
+height = 122.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yrixw"]
+radius = 17.992971
+height = 170.9332
+
+[sub_resource type="Animation" id="Animation_mtuoh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(21.254198, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15.586411, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sword:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_htcer"]
+resource_name = "hit"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-14.306651, 0, 0, 0.29999998, 1.0147915, 13.89265, -0.16541614, -12.280898, 0.044431627, 3.2987127, 13.638903, -0.032432318, 2.0069103, 0, 0),
+"times": PackedFloat32Array(0, 0.26666668, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2.3546574, 0, 0, 0.23333332, 0, 0.416049, -0.1930943, 0.0046792338, 0.15404719, -0.003733009, -0.15296483, -0.12054956, 0.031998403, 0, 0),
+"times": PackedFloat32Array(0, 0.27928618, 0.55388296)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0.06666667, 0.0077923536, 2, -0.061330885, 0.0056777, 0.044444453, 0, 1, -0.062583536, 0.0043513775, 0, 0),
+"times": PackedFloat32Array(0.06666667, 0.16666667, 0.23333333)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sword")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.13333334, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"activate"
+}, {
+"args": [],
+"method": &"deactivate"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dd0ac"]
+_data = {
+&"RESET": SubResource("Animation_mtuoh"),
+&"hit": SubResource("Animation_htcer")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=1213475937 node_paths=PackedStringArray("sprite")]
+z_index = 10
+scale = Vector2(0.70574296, 0.70574296)
+collision_mask = 10
+script = ExtResource("1_cvnsp")
+sprite = NodePath("Sprite")
+stretch_intensity = 0.001
+
+[node name="Sprite" type="Node2D" parent="." unique_id=1662570512]
+
+[node name="Shadow" type="Sprite2D" parent="Sprite" unique_id=80646476]
+modulate = Color(0, 0, 0, 0.27450982)
+position = Vector2(-10, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6t5aa")
+
+[node name="Body" type="Sprite2D" parent="Sprite" unique_id=1638080201]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6t5aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=668768218]
+shape = SubResource("CapsuleShape2D_22t55")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=1307378699]
+
+[node name="Sword" type="Area2D" parent="Weapon" unique_id=2050722513 node_paths=PackedStringArray("animation_player")]
+position = Vector2(21.254198, 15.586411)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_vgqql")
+animation_player = NodePath("AnimationPlayer")
+power = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapon/Sword" unique_id=1003531550]
+position = Vector2(31.172825, -4.250839)
+scale = Vector2(0.315, 0.315)
+texture = ExtResource("3_6t5aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/Sword" unique_id=1578030581]
+position = Vector2(38.257557, -1.4169464)
+rotation = 1.5707964
+scale = Vector2(0.315, 0.315)
+shape = SubResource("CapsuleShape2D_yrixw")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon/Sword" unique_id=364241249]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_dd0ac")
